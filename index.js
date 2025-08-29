@@ -11,6 +11,23 @@ const roll_number = "22bci0064"; // YOUR_ROLL_NUMBER
 const isNumber = str => !isNaN(str) && !isNaN(parseFloat(str));
 const isAlphabet = str => /^[a-zA-Z]+$/.test(str);
 
+// ✅ ADD THIS ROOT ROUTE HERE (after helper functions, before other routes)
+app.get('/', (req, res) => {
+  res.json({ 
+    message: "VIT BFHL API is running",
+    endpoints: {
+      "GET /": "API status",
+      "GET /bfhl": "Operation code", 
+      "POST /bfhl": "Main endpoint"
+    }
+  });
+});
+
+// GET /bfhl route
+app.get('/bfhl', (req, res) => {
+  res.json({ operation_code: 1 });
+});
+
 app.post('/bfhl', (req, res) => {
   try {
     const { data } = req.body;
@@ -64,11 +81,6 @@ app.post('/bfhl', (req, res) => {
   } catch (error) {
     return res.status(500).json({ is_success: false, message: error.message });
   }
-});
-
-// Optional GET route for testing
-app.get('/bfhl', (req, res) => {
-  res.json({ operation_code: 1 });
 });
 
 const PORT = process.env.PORT || 3000;
