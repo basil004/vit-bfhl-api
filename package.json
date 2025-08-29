@@ -1,10 +1,11 @@
 {
     "name": "vit-bfhl-api",
     "version": "1.0.0",
-    "private": true,
-    "license": "MIT",
+    "main": "api/bfhl.js",
     "scripts": {
-      "dev": "vercel dev"
-    }
+      "start": "node api/bfhl.js"
+    },
+    "dependencies": {}
   }
+  
   
